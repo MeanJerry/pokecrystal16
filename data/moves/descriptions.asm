@@ -1,5 +1,10 @@
 MoveDescriptions::
 ; entries correspond to move ids (see constants/move_constants.asm)
+	indirect_table 2, 1
+	indirect_entries NUM_ATTACKS, MoveDescriptions1
+	indirect_table_end
+
+MoveDescriptions1:
 	dw AbsorbDescription
 	dw AccelerockDescription
 	dw AcidDescription
@@ -522,6 +527,8 @@ MoveDescriptions::
 	dw ZenHeadbuttDescription
 	dw ZippyZapDescription
 
+InvalidMoveDescription:
+	db "?@"
 
 AbsorbDescription:
 	db   "Steals 1/2 of the"

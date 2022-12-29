@@ -529,32 +529,41 @@
 	const ZIPPY_ZAP
 NUM_ATTACKS EQU const_value + -1
 
+	if NUM_ATTACKS > $3fff
+		fail "Too many moves defined!"
+	endc
 ; Battle animations use the same constants as the moves up to this point
-	const ANIM_SWEET_SCENT_2
-	const ANIM_THROW_POKE_BALL
-	const ANIM_SEND_OUT_MON
-	const ANIM_RETURN_MON
-	const ANIM_CONFUSED
-	const ANIM_SLP
-	const ANIM_BRN
-	const ANIM_PSN
-	const ANIM_SAP
-	const ANIM_FRZ
-	const ANIM_PAR
-	const ANIM_IN_LOVE
-	const ANIM_IN_SANDSTORM
-	const ANIM_IN_HAIL
-	const ANIM_IN_NIGHTMARE
-	const ANIM_IN_WHIRLPOOL
+	const ANIM_SWEET_SCENT_2     ; fc
+; Animations with negative IDs will play even when animations are disabled
+const_value = -$16 ;fix if more negative values are added
+	const ANIM_THROW_POKE_BALL   ; -16 (ffea)
+	const ANIM_SEND_OUT_MON      ; -15 (ffeb)
+	const ANIM_RETURN_MON        ; -14 (ffec)
+	const ANIM_CONFUSED          ; -13 (ffed)
+	const ANIM_SLP               ; -12 (ffee)
+	const ANIM_BRN               ; -11 (ffef)
+	const ANIM_PSN               ; -10 (fff0)
+	const ANIM_SAP               ;  -f (fff1)
+	const ANIM_FRZ               ;  -e (fff2)
+	const ANIM_PAR               ;  -d (fff3)
+	const ANIM_IN_LOVE           ;  -c (fff4)
+	const ANIM_IN_SANDSTORM      ;  -b (fff5)
+	const ANIM_IN_HAIL           ;  -a (fff6)
+	const ANIM_IN_NIGHTMARE      ;  -9 (fff7)
+	const ANIM_IN_WHIRLPOOL      ;  -8 (fff8)
 ; battle anims
-	const ANIM_MISS
-	const ANIM_ENEMY_DAMAGE
-	const ANIM_ENEMY_STAT_DOWN
-	const ANIM_PLAYER_STAT_DOWN
-	const ANIM_PLAYER_DAMAGE
-	const ANIM_WOBBLE
-	const ANIM_SHAKE
-	const ANIM_HIT_CONFUSION
+	const ANIM_MISS              ;  -8 (fff8)
+	const ANIM_ENEMY_DAMAGE      ;  -7 (fff9)
+	const ANIM_ENEMY_STAT_DOWN   ;  -6 (fffa)
+	const ANIM_PLAYER_STAT_DOWN  ;  -5 (fffb)
+	const ANIM_PLAYER_DAMAGE     ;  -4 (fffc)
+	const ANIM_WOBBLE            ;  -3 (fffd)
+	const ANIM_SHAKE             ;  -2 (fffe)
+	const ANIM_HIT_CONFUSION     ;  -1 (ffff)
+
+	if const_value
+		fail "Please adjust the initial constant value to ensure that the last animation constant has a value of -1"
+	endc
 
 ; wNumHits uses offsets from ANIM_MISS
 	const_def
