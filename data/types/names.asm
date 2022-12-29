@@ -17,8 +17,6 @@ TypeNames:
 	dw Normal
 	dw Normal
 	dw Normal
-	dw Normal
-	dw Normal
 	dw CurseType
 	dw Fire
 	dw Water
@@ -28,6 +26,8 @@ TypeNames:
 	dw Ice
 	dw Dragon
 	dw Dark
+	dw Fairy
+	dw FreezeDry
 
 Normal:    db "NORMAL@"
 Fighting:  db "FIGHTING@"
@@ -48,3 +48,5 @@ Ghost:     db "GHOST@"
 Steel:     db "STEEL@"
 Dragon:    db "DRAGON@"
 Dark:      db "DARK@"
+Fairy:     db "FAIRY@"
+FreezeDry: db "ICE@"

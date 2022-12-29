@@ -17,10 +17,9 @@ PHYSICAL EQU const_value
 	const BUG
 	const GHOST
 	const STEEL
+	const DRAGON
 
 UNUSED_TYPES EQU const_value
-	const TYPE_10
-	const TYPE_11
 	const TYPE_12
 	const TYPE_13
 	const TYPE_14
@@ -38,8 +37,9 @@ SPECIAL EQU const_value
 	const ELECTRIC
 	const PSYCHIC
 	const ICE
-	const DRAGON
 	const DARK
+	const FAIRY
+	const ICE_FD
 TYPES_END EQU const_value
 
 NUM_TYPES EQU TYPES_END + UNUSED_TYPES - UNUSED_TYPES_END

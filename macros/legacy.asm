@@ -57,35 +57,35 @@ vartomem      EQUS "getnum"
 mapnametotext EQUS "getcurlandmarkname"
 readcoins     EQUS "getcoins"
 
-pokenamemem: MACRO
+MACRO pokenamemem
 	getmonname \2, \1
 ENDM
 
-itemtotext: MACRO
+MACRO itemtotext
 	getitemname \2, \1
 ENDM
 
-landmarktotext: MACRO
+MACRO landmarktotext
 	getlandmarkname \2, \1
 ENDM
 
-trainertotext: MACRO
+MACRO trainertotext
 	gettrainername \3, \1, \2
 ENDM
 
-trainerclassname: MACRO
+MACRO trainerclassname
 	gettrainerclassname \2, \1
 ENDM
 
-name: MACRO
+MACRO name
 	getname \3, \1, \2
 ENDM
 
-stringtotext: MACRO
+MACRO stringtotext
 	getstring \2, \1
 ENDM
 
-readmoney: MACRO
+MACRO readmoney
 	getmoney \2, \1
 ENDM
 
@@ -116,25 +116,25 @@ loadbytec2cf      EQUS "writeunusedbytebuffer"
 
 ; macros/scripts/maps.asm
 
-mapconst: MACRO
+MACRO mapconst
 	map_const \1, \3, \2
 ENDM
 
 maptrigger EQUS "scene_script"
 
-warp_def: MACRO
+MACRO warp_def
 	warp_event \2, \1, \4, \3
 ENDM
 
-xy_trigger: MACRO
+MACRO xy_trigger
 	coord_event \3, \2, \1, \5
 ENDM
 
-signpost: MACRO
+MACRO signpost
 	bg_event \2, \1, \3, \4
 ENDM
 
-person_event: MACRO
+MACRO person_event
 ;	object_event \3, \2, \1, \4, \5, \6, \7, \8, \9, \10, \11, \12, \13
 	db \1, \2 + 4, \3 + 4, \4
 	dn \6, \5

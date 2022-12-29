@@ -256,7 +256,7 @@ BattleAnimations::
 	dw BattleAnim_253
 	dw BattleAnim_254
 	dw BattleAnim_SweetScent2
-; $100
+; Non-Move Animations
 	dw BattleAnim_ThrowPokeBall
 	dw BattleAnim_SendOutMon
 	dw BattleAnim_ReturnMon
@@ -269,6 +269,7 @@ BattleAnimations::
 	dw BattleAnim_Par
 	dw BattleAnim_InLove
 	dw BattleAnim_InSandstorm
+	dw BattleAnim_InHail
 	dw BattleAnim_InNightmare
 	dw BattleAnim_InWhirlpool
 	dw BattleAnim_Miss
@@ -580,6 +581,20 @@ BattleAnim_InSandstorm:
 	anim_wait 8
 	anim_ret
 
+BattleAnim_InHail:
+	anim_1gfx ANIM_GFX_HAIL
+	anim_obj ANIM_OBJ_HAIL, 88, 0, $0
+	anim_wait 8
+	anim_obj ANIM_OBJ_HAIL, 72, 0, $1
+	anim_wait 8
+	anim_obj ANIM_OBJ_HAIL, 56, 0, $2
+.loop
+	anim_sound 0, 1, SFX_MENU
+	anim_wait 8
+	anim_loop 6, .loop
+	anim_wait 8
+	anim_ret
+	
 BattleAnim_InNightmare:
 	anim_1gfx ANIM_GFX_ANGELS
 	anim_sound 0, 0, SFX_BUBBLEBEAM

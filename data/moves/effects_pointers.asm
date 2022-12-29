@@ -49,6 +49,7 @@ MoveEffectsPointers:
 	dw Mist
 	dw FocusEnergy
 	dw RecoilHit
+	dw BigRecoilHit
 	dw DoConfuse
 	dw AttackUp2
 	dw DefenseUp2
@@ -157,3 +158,4 @@ MoveEffectsPointers:
 	dw BeatUp
 	dw Fly
 	dw DefenseCurl
+	dw ShellSmash

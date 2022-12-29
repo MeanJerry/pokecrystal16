@@ -24,11 +24,11 @@ else
 SHA1 := sha1sum
 endif
 
-RGBDS ?=
-RGBASM  ?= $(RGBDS)rgbasm
-RGBFIX  ?= $(RGBDS)rgbfix
-RGBGFX  ?= $(RGBDS)rgbgfx
-RGBLINK ?= $(RGBDS)rgblink
+RGBDS ?= RGBDS/
+RGBASM  ?= $(RGBDS)rgbasm.exe
+RGBFIX  ?= $(RGBDS)rgbfix.exe
+RGBGFX  ?= $(RGBDS)rgbgfx.exe
+RGBLINK ?= $(RGBDS)rgblink.exe
 
 
 ### Build targets

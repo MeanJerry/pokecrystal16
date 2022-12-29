@@ -22,6 +22,7 @@ AnimObjGFX:
 	anim_obj_gfx 13, AnimObjBubbleGFX
 	anim_obj_gfx 16, AnimObjNoiseGFX
 	anim_obj_gfx  2, AnimObjPowderGFX
+	anim_obj_gfx  2, AnimObjHailGFX
 	anim_obj_gfx 11, AnimObjBeamGFX
 	anim_obj_gfx  9, AnimObjSpeedGFX
 	anim_obj_gfx  9, AnimObjChargeGFX

@@ -5760,13 +5760,14 @@ BattleCommand_TrapTarget:
 	dbw FIRE_SPIN, FireSpinTrapText  ; 'was trapped!'
 	dbw CLAMP,     ClampedByText     ; 'was CLAMPED by'
 	dbw WHIRLPOOL, WhirlpoolTrapText ; 'was trapped!'
+; TODO: Add other trap moves to this table.
 
 INCLUDE "engine/battle/move_effects/mist.asm"
 
 INCLUDE "engine/battle/move_effects/focus_energy.asm"
 
 BattleCommand_Recoil:
-; recoil
+; 1/4 damage recoil
 
 	ld hl, wBattleMonMaxHP
 	ldh a, [hBattleTurn]
@@ -5786,6 +5787,75 @@ BattleCommand_Recoil:
 	rr c
 	srl b
 	rr c
+	ld a, b
+	or c
+	jr nz, .min_damage
+	inc c
+.min_damage
+	ld a, [hli]
+	ld [wBuffer2], a
+	ld a, [hl]
+	ld [wBuffer1], a
+	dec hl
+	dec hl
+	ld a, [hl]
+	ld [wBuffer3], a
+	sub c
+	ld [hld], a
+	ld [wBuffer5], a
+	ld a, [hl]
+	ld [wBuffer4], a
+	sbc b
+	ld [hl], a
+	ld [wBuffer6], a
+	jr nc, .dont_ko
+	xor a
+	ld [hli], a
+	ld [hl], a
+	ld hl, wBuffer5
+	ld [hli], a
+	ld [hl], a
+.dont_ko
+	hlcoord 10, 9
+	ldh a, [hBattleTurn]
+	and a
+	ld a, 1
+	jr z, .animate_hp_bar
+	hlcoord 2, 2
+	xor a
+.animate_hp_bar
+	ld [wWhichHPBar], a
+	predef AnimateHPBar
+	call RefreshBattleHuds
+	ld hl, RecoilText
+	jp StdBattleTextbox
+
+BattleCommand_BigRecoil:
+; 3/8 damage recoil (alternate to 1/3)
+
+	ld hl, wBattleMonMaxHP
+	ldh a, [hBattleTurn]
+	and a
+	jr z, .got_hp
+	ld hl, wEnemyMonMaxHP
+.got_hp
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	ld d, a
+; get 3/8 damage or 1 HP, whichever is higher
+	ld a, [wCurDamage]
+	ld b, a
+	ld a, [wCurDamage + 1]
+	ld c, a
+	srl a
+	srl b
+	rr c
+	srl a
+	srl b
+	rr c
+	srl a
+	add b, a
+	add c, a
 	ld a, b
 	or c
 	jr nz, .min_damage

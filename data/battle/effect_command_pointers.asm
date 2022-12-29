@@ -43,6 +43,7 @@ BattleCommandPointers:
 	dw BattleCommand_FlinchTarget
 	dw BattleCommand_OHKO
 	dw BattleCommand_Recoil
+	dw BattleCommand_BigRecoil
 	dw BattleCommand_Mist
 	dw BattleCommand_FocusEnergy
 	dw BattleCommand_Confuse
