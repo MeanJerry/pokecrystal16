@@ -7,7 +7,7 @@ ___current_indirect_size = 0
 ;   (repeat as many times as necessary)
 ;   indirect_table_end
 
-indirect_table: MACRO
+MACRO indirect_table
 	; arguments: entry size, initial index (0 or 1)
 	if ((\2) * (\2)) != (\2)
 		; guarantees that the index is something numeric, and it's only true if the index is 0 or 1
@@ -28,7 +28,7 @@ ___current_indirect_size = \1
 	dw (\1) | ((\2) << 15)
 ENDM
 
-indirect_entries: MACRO
+MACRO indirect_entries
 	; arguments: next max index, far label (omit for zero/no data), far bank (if different from label)
 	if ___current_indirect_size == 0
 		fail "indirect table error: there's no active indirect table"
@@ -72,7 +72,7 @@ ___current_indirect_iteration = ___current_indirect_iteration + 1
 	endc
 ENDM
 
-indirect_table_end: MACRO
+MACRO indirect_table_end
 	; no arguments
 	if ___current_indirect_size == 0
 		fail "indirect table error: there's no active indirect table"

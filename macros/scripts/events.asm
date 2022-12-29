@@ -1064,13 +1064,13 @@ MACRO checksave
 ENDM
 
 	enum loadmonindex_command ; $aa
-loadmonindex: MACRO
+MACRO loadmonindex
 	db loadmonindex_command
 	dw \2 ; pokemon
 	db \1 ; 0: don't reserve, 1-8: reserve in specific spot
 ENDM
 
 	enum checkmaplockedmons_command ; $ab
-checkmaplockedmons: MACRO
+MACRO checkmaplockedmons
 	db checkmaplockedmons_command
 ENDM
